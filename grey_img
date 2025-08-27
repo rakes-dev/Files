@@ -1,0 +1,23 @@
+i = imread('download.jpg');
+gray_img = rgb2gray(i); 
+[rows, cols] = size(gray_img); 
+
+
+invertedImg = zeros(rows, cols, class(gray_img));
+
+
+for r = 1:rows
+    for c = 1:cols     
+        invertedImg(r, c) = 255 - gray_img(r, c);
+    end
+end
+
+
+figure;
+subplot(1,2,1);
+imshow(gray_img);
+title('Original Grayscale Image');
+
+subplot(1,2,2);
+imshow(invertedImg);
+title('Inverted Image');
