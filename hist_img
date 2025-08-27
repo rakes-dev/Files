@@ -1,0 +1,24 @@
+img = imread('download.jpg'); % Replace with your image filename
+if size(img, 3) == 3
+    gray_img = rgb2gray(img);
+else
+    gray_img = img;
+end
+
+% Initialize histogram array for 256 intensity levels
+histogram_counts = zeros(1, 256);
+
+% Loop through each pixel to count intensities
+for r = 1:size(gray_img, 1)
+    for c = 1:size(gray_img, 2)
+        intensity = gray_img(r, c);
+        histogram_counts(intensity + 1) = histogram_counts(intensity + 1) + 1;
+    end
+end
+
+% Plot the histogram
+figure;
+bar(0:255, histogram_counts);
+xlabel('Pixel Intensity');
+ylabel('Frequency');
+title('Histogram of Grayscale Image');
